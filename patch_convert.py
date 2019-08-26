@@ -5,16 +5,17 @@ import numpy as np
 def i2p(im,n1,n2,step1,step2):
     #获取图片矩阵的大小
     #计算每块的坐标，包括x坐标和y坐标
-    N1 = 64
-    N2 = 64
+
+    N1,N2 = im.shape[:]
+    # print(N1,N2)
     xstart = [i for i in range(0,N1-n1+1,step1)]
     # print(xstart)
-    # a = [i for i in range(xstart[len(xstart)-1],N1-n1+2)]
-    # xstart.extend(a)
+    a = [i for i in range(xstart[len(xstart)-1]+1,N1-n1+1)]
+    xstart.extend(a)
     # print(xstart)
     ystart = [i for i in range(0,N2-n2+1,step2)]
-    # b = [i for i in range(ystart[len(ystart)-1],N2-n2+2)]
-    # ystart.extend(b)
+    b = [i for i in range(ystart[len(ystart)-1]+1,N2-n2+1)]
+    ystart.extend(b)
 
     l1 = len(xstart)
     l2 = len(ystart)
@@ -39,11 +40,11 @@ def p2i(m_patches,N1,N2,step1,step2):
     (n1,n2,patch_num) = m_patches.shape
     #计算每块的坐标，包括x坐标和y坐标
     xstart = [i for i in range(0,N1-n1+1,step1)]
-    # a = [i for i in range(xstart[len(xstart)-1],N1-n1+2)]
-    # xstart.extend(a)
+    a = [i for i in range(xstart[len(xstart)-1]+1,N1-n1+1)]
+    xstart.extend(a)
     ystart = [i for i in range(0,N2-n2+1,step2)]
-    # b = [i for i in range(ystart[len(ystart)-1],N2-n2+2)]
-    # ystart.extend(b)
+    b = [i for i in range(ystart[len(ystart)-1]+1,N2-n2+1)]
+    ystart.extend(b)
     l1 = len(xstart)
     l2 = len(ystart)
     xstartI = xstart * l2
